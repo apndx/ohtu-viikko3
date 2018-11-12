@@ -1,0 +1,6 @@
+/Kurssistatistiikka/.nb-gradle/
+/Kurssistatistiikka/build/
+
+build/
+.gradle/
+.nb-gradle/
