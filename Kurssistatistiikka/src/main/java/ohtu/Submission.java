@@ -41,12 +41,12 @@ public class Submission {
         this.exercises = exercises;
     }
 
-    @Override
-    public String toString() {
+    //@Override
+    //public String toString() {
         //return ""+week;
-        return this.getCourse() + ", viikko " + this.getWeek() + " tehtyjä tehtäviä yhteensä "
-                + this.exercises.length + ", aikaa kului " + this.getHours() + " tuntia. Tehdyt tehtävät: " + Arrays.toString(this.exercises);
-
-    }
+//        return this.getCourse() + ", viikko " + this.getWeek() + " tehtyjä tehtäviä yhteensä "
+//                + this.exercises.length + ", aikaa kului " + this.getHours() + " tuntia. Tehdyt tehtävät: " + Arrays.toString(this.exercises);
+    
+   // }
 
 }
