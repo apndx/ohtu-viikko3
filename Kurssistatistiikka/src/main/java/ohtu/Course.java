@@ -15,6 +15,10 @@ public class Course {
 
     private String name;
     private String fullName;
+    private int allSubs = 0;
+    private int allHours = 0;
+    private   int allExer = 0;
+    
 
     public String getFullName() {
         return fullName;
@@ -73,6 +77,30 @@ public class Course {
             return false;
         }
         return true;
+    }
+
+    public int getAllSubs() {
+        return allSubs;
+    }
+
+    public void setAllSubs(int allSubs) {
+        this.allSubs = allSubs;
+    }
+
+    public int getAllHours() {
+        return allHours;
+    }
+
+    public void setAllHours(int allHours) {
+        this.allHours = allHours;
+    }
+
+    public int getAllExer() {
+        return allExer;
+    }
+
+    public void setAllExer(int allExer) {
+        this.allExer = allExer;
     }
 
     
