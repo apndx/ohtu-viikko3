@@ -17,7 +17,7 @@ public class Stepdefs {
     UserDao userDao = new InMemoryUserDao();
     AuthenticationService auth = new AuthenticationService(userDao);
     List<String> inputLines = new ArrayList<>();
-
+    
     @Given("^command login is selected$")
     public void command_login_selected() throws Throwable {
         inputLines.add("login");
