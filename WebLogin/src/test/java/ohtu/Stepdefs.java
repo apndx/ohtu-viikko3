@@ -102,6 +102,32 @@ public class Stepdefs {
         createUserWith(user, pass);
     }
 
+    @Given("^user with username \"([^\"]*)\" with password \"([^\"]*)\" is successfully created$")
+    public void user_with_username_with_password_is_successfully_created(String user, String pass) throws Throwable {
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));
+        element.click();
+        createUserWith(user, pass);
+    }
+
+    @When("^a valid username \"([^\"]*)\" and password \"([^\"]*)\" are entered$")
+    public void a_valid_username_and_password_are_entered(String user, String pass) throws Throwable {
+        logInWith(user, pass);
+    }
+
+    @Given("^user with username \"([^\"]*)\" and password \"([^\"]*)\" is tried to be created$")
+    public void user_with_username_and_password_is_tried_to_be_created(String user, String pass) throws Throwable {
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));
+        element.click();
+        createUserWith(user, pass);
+    }
+
+    @When("^an invalid username \"([^\"]*)\" and password \"([^\"]*)\" are entered$")
+    public void an_invalid_username_and_password_are_entered(String user, String pass) throws Throwable {
+        logInWith(user, pass);
+    }
+
     /* helper methods */
     private void pageHasContent(String content) {
         assertTrue(driver.getPageSource().contains(content));
