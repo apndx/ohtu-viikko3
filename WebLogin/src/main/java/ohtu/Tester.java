@@ -51,7 +51,7 @@ public class Tester {
 //        System.out.println(driver.getPageSource());
 //        driver.quit();
 //        //element.sendKeys("akkep"); //oikea salasana
-//uuden käyttäjätunnuksen luominen
+//uuden käyttäjätunnuksen luominen ja logout
         WebDriver driver = new HtmlUnitDriver();
         driver.get("http://localhost:4567");
         sleep(2);

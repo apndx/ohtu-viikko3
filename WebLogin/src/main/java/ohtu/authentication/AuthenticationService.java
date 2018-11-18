@@ -25,19 +25,44 @@ public class AuthenticationService {
 
     public CreationStatus createUser(String username, String password, String passwordConfirmation) {
         CreationStatus status = new CreationStatus();
-        
+        String usernameRegex = "[a-z]*";
+        int conditions = 0; // if this is 0 in the end, password is not valid
+
         if (userDao.findByName(username) != null) {
             status.addError("username is already taken");
         }
 
-        if (username.length()<3 ) {
+        if (username.length() < 3) {
             status.addError("username should have at least 3 characters");
+        }
+
+        if (!username.matches(usernameRegex)) {
+            status.addError("username should consist of characters a-z");
+        }
+
+        if (password.length() < 8) {
+            status.addError("password should have at least 8 characters");
+        }
+
+        for (int i = 0; i < password.length(); i++) {
+
+            char tarkastettava = password.charAt(i);
+
+            if (java.lang.Character.isDigit(tarkastettava)) {
+                conditions++;
+            } else if (!java.lang.Character.isDigit(tarkastettava) && !java.lang.Character.isLetter(tarkastettava)) {
+                conditions++;
+            }
+        }
+
+        if (conditions == 0) {
+            status.addError("password should have at least one digit or one special character");
         }
 
         if (status.isOk()) {
             userDao.add(new User(username, password));
         }
-        
+
         return status;
     }
 

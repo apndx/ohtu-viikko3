@@ -5,3 +5,5 @@ jamppa89630;passelipassu
 joku;jokuvaan
 jamppa92273;passelipassu
 jamppa26006;passelipassu
+appe;00000000
+appee;11111111
