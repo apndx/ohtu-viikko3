@@ -4,8 +4,9 @@ public class TennisGame {
 
     private int score1 = 0;
     private int score2 = 0;
-    private String player1Name;
-    private String player2Name;
+    private final String player1Name;
+    private final String player2Name;
+    private final int scoreRise = 1;
 
     public TennisGame(String player1Name, String player2Name) {
         this.player1Name = player1Name;
@@ -14,9 +15,9 @@ public class TennisGame {
 
     public void wonPoint(String playerName) {
         if (playerName == "player1") {
-            score1 += 1;
+            score1 += scoreRise;
         } else {
-            score2 += 1;
+            score2 += scoreRise;
         }
     }
 

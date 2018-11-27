@@ -10,12 +10,7 @@ public class IntJoukko {
     private int alkioidenLkm;    // Tyhjässä joukossa alkioiden_määrä on nolla. 
 
     public IntJoukko() {
-        lukujono = new int[KOKO];
-        for (int i = 0; i < lukujono.length; i++) {
-            lukujono[i] = 0;
-        }
-        alkioidenLkm = 0;
-        this.kasvatuskoko = KASVATUS;
+        this(KOKO);
     }
 
     public IntJoukko(int kapasiteetti) {
@@ -28,7 +23,6 @@ public class IntJoukko {
         }
         alkioidenLkm = 0;
         this.kasvatuskoko = KASVATUS;
-
     }
 
     public IntJoukko(int kapasiteetti, int kasvatuskoko) {
