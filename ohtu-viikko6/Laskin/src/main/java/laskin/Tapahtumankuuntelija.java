@@ -1,5 +1,6 @@
 package laskin;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.event.Event;
@@ -13,6 +14,7 @@ public class Tapahtumankuuntelija implements EventHandler {
     private Sovelluslogiikka sovellus;
     private Map<Button, Komento> komennot;
     private Komento edellinen = null;
+    private ArrayList<Integer> tulokset;
 
     public Tapahtumankuuntelija(TextField tuloskentta, TextField syotekentta, Button plus, Button miinus, Button nollaa, Button undo) {
         this.undo = undo;
@@ -21,7 +23,7 @@ public class Tapahtumankuuntelija implements EventHandler {
         komennot.put(plus, new Summa(tuloskentta, syotekentta, nollaa, undo, sovellus));
         komennot.put(miinus, new Erotus(tuloskentta, syotekentta, nollaa, undo, sovellus));
         komennot.put(nollaa, new Nollaa(tuloskentta, syotekentta, nollaa, undo, sovellus));
-
+        this.tulokset = new ArrayList<>();
     }
 
     @Override
@@ -39,8 +41,10 @@ public class Tapahtumankuuntelija implements EventHandler {
 
             komento.suorita(arvo);
             edellinen = komento;
+            tulokset.add(Integer.parseInt(edellinen.getTuloskentta().getText()));
         } else {
-            edellinen.peru();
+            System.out.println(tulokset.get(tulokset.size() - 2));
+            edellinen.peru(tulokset.get(tulokset.size() - 2));
             edellinen = null;
         }
     }

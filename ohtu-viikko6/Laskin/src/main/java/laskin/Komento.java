@@ -13,7 +13,10 @@ import javafx.scene.control.TextField;
  */
 public interface Komento {
     void suorita(int arvo);
-    void peru();
+    void peru(int arvo);
     TextField getSyotekentta();
-    
+    int getMuutos();
+    TextField getTuloskentta();
+    void setEdellinenTulos(int arvo);
+    int getEdellinenTulos();
 }

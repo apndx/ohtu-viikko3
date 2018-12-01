@@ -19,6 +19,8 @@ public class Nollaa implements Komento {
     private final Button nollaa;
     private final Button undo;
     private final Sovelluslogiikka sovellus;
+    private int edellinenTulos;
+    private int muutos;
 
     public Nollaa(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
         this.tuloskentta = tuloskentta;
@@ -26,16 +28,19 @@ public class Nollaa implements Komento {
         this.nollaa = nollaa;
         this.undo = undo;
         this.sovellus = sovellus;
+        this.edellinenTulos = 0;
+        this.muutos = 0;
+
     }
 
     @Override
     public void suorita(int arvo) {
         sovellus.nollaa();
-        
+
         int laskunTulos = sovellus.tulos();
 
         syotekentta.setText("");
-        tuloskentta.setText("" + laskunTulos);
+        tuloskentta.setText("" + laskunTulos);;
 
         if (laskunTulos == 0) {
             nollaa.disableProperty().set(true);
@@ -46,8 +51,19 @@ public class Nollaa implements Komento {
     }
 
     @Override
-    public void peru() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void peru(int arvo) {
+
+        syotekentta.setText("");
+        tuloskentta.setText("" + arvo);
+        sovellus.peru(arvo);
+        
+        if (arvo == 0) {
+            nollaa.disableProperty().set(true);
+        } else {
+            nollaa.disableProperty().set(false);
+        }
+        undo.disableProperty().set(false);
+
     }
 
     @Override
@@ -55,4 +71,23 @@ public class Nollaa implements Komento {
         return syotekentta;
     }
 
+    @Override
+    public TextField getTuloskentta() {
+        return tuloskentta;
+    }
+
+    @Override
+    public void setEdellinenTulos(int edellinenTulos) {
+        this.edellinenTulos = edellinenTulos;
+    }
+
+    @Override
+    public int getMuutos() {
+        return this.muutos;
+    }
+    
+     @Override
+    public int getEdellinenTulos() {
+        return edellinenTulos;
+    }
 }

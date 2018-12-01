@@ -19,6 +19,8 @@ public class Erotus implements Komento {
     private final Button nollaa;
     private final Button undo;
     private final Sovelluslogiikka sovellus;
+    private int muutos;
+    private int edellinenTulos;
 
     public Erotus(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
 
@@ -27,7 +29,8 @@ public class Erotus implements Komento {
         this.nollaa = nollaa;
         this.undo = undo;
         this.sovellus = sovellus;
-
+        this.muutos = 0;
+        this.edellinenTulos = 0;
     }
 
     @Override
@@ -38,6 +41,7 @@ public class Erotus implements Komento {
 
         syotekentta.setText("");
         tuloskentta.setText("" + laskunTulos);
+        this.muutos = arvo;
 
         if (laskunTulos == 0) {
             nollaa.disableProperty().set(true);
@@ -49,13 +53,49 @@ public class Erotus implements Komento {
     }
 
     @Override
-    public void peru() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void peru(int arvo) {
+        sovellus.plus(muutos);
+        
+        int laskunTulos = sovellus.tulos();
+        
+        syotekentta.setText("");
+        tuloskentta.setText("" + laskunTulos);
+        
+        if (this.muutos == 0) {
+            nollaa.disableProperty().set(true);
+        } else {
+            nollaa.disableProperty().set(false);
+        }
+        undo.disableProperty().set(false);
+    }
+
+    @Override
+    public int getMuutos() {
+        return muutos;
+    }
+
+    @Override
+    public TextField getTuloskentta() {
+        return tuloskentta;
+    }
+
+    public void setMuutos(int muutos) {
+        this.muutos = muutos;
     }
 
     @Override
     public TextField getSyotekentta() {
         return syotekentta;
+    }
+    
+     @Override
+    public void setEdellinenTulos(int edellinenTulos) {
+        this.edellinenTulos = edellinenTulos;
+    }
+    
+     @Override
+    public int getEdellinenTulos() {
+        return edellinenTulos;
     }
 
 }
