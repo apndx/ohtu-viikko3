@@ -43,7 +43,7 @@ public class Tapahtumankuuntelija implements EventHandler {
             edellinen = komento;
             tulokset.add(Integer.parseInt(edellinen.getTuloskentta().getText()));
         } else {
-            System.out.println(tulokset.get(tulokset.size() - 2));
+            //System.out.println(tulokset.get(tulokset.size() - 2));
             edellinen.peru(tulokset.get(tulokset.size() - 2));
             edellinen = null;
         }
