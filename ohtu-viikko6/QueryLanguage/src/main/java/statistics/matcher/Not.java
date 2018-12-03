@@ -1,6 +1,5 @@
 package statistics.matcher;
 
-
 import statistics.Player;
 import statistics.Player;
 import statistics.matcher.Matcher;

@@ -36,4 +36,9 @@ public class Querybuilder {
         return this;
     }
 
+    public Querybuilder oneOf(Matcher... matchers) {
+        this.matcher = new Or(matchers);
+        return this;
+    }
+
 }

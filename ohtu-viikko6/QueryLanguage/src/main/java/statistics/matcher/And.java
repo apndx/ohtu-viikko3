@@ -17,7 +17,6 @@ public class And implements Matcher {
                 return false;
             }
         }
-
         return true;
     }
 }

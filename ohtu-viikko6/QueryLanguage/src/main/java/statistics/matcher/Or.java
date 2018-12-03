@@ -22,13 +22,12 @@ public class Or implements Matcher {
     @Override
     public boolean matches(Player p) {
 
-        int count = 0;
-
         for (Matcher matcher : matchers) {
+
             if (matcher.matches(p)) {
-                count++;
+                return true;
             }
         }
-        return count != 0;
+        return false;
     }
 }
